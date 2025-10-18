@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payroll Input | Main Page</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="card">
+    <h2>Payroll Program</h2>
+
+    <form id="payrollForm">
+      <label for="id">ID:</label>
+      <input type="text" id="id" placeholder="Enter ID" required>
+
+      <label for="firstname">First Name:</label>
+      <input type="text" id="firstname" placeholder="Enter first name" required>
+
+      <label for="middlename">Middle Name:</label>
+      <input type="text" id="middlename" placeholder="Enter middle name">
+
+      <label for="lastname">Last Name:</label>
+      <input type="text" id="lastname" placeholder="Enter last name" required>
+
+      <label for="position">Position:</label>
+      <input type="text" id="position" placeholder="Enter position" required>
+
+      <label for="rate">Daily Rate:</label>
+      <input type="number" id="rate" placeholder="Enter daily rate" required>
+
+      <label for="days">Days Worked:</label>
+      <input type="number" id="days" placeholder="Enter days worked" required>
+
+      <button type="button" onclick="computePayroll()">Compute Payroll</button>
+    </form>
+  </div>
+
+  <script>
+    function computePayroll() {
+      const id = document.getElementById("id").value;
+      const firstname = document.getElementById("firstname").value;
+      const middlename = document.getElementById("middlename").value;
+      const lastname = document.getElementById("lastname").value;
+      const position = document.getElementById("position").value;
+      const rate = parseFloat(document.getElementById("rate").value);
+      const days = parseFloat(document.getElementById("days").value);
+
+      if (!id || !firstname || !lastname || !position || isNaN(rate) || isNaN(days)) {
+        alert("Please fill out all required fields correctly.");
+        return;
+      }
+
+      // Save to localStorage
+      localStorage.setItem("id", id);
+      localStorage.setItem("firstname", firstname);
+      localStorage.setItem("middlename", middlename);
+      localStorage.setItem("lastname", lastname);
+      localStorage.setItem("position", position);
+      localStorage.setItem("rate", rate);
+      localStorage.setItem("days", days);
+
+      // Redirect to display page (if you have one)
+      window.location.href = "display.html";
+    }
+  </script>
+</body>
+</html>
